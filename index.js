@@ -20,13 +20,13 @@ connection.connect((error) => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
-const createTable =
-  "CREATE TABLE info (id int PRIMARY KEY AUTO_INCREMENT, name TEXT, image VARCHAR(255))";
+// const createTable =
+//   "CREATE TABLE info (id int PRIMARY KEY AUTO_INCREMENT, name TEXT, image VARCHAR(255))";
 
-connection.query(createTable, function (err, result) {
-  if (err) throw err;
-  console.log("table created");
-});
+// connection.query(createTable, function (err, result) {
+//   if (err) throw err;
+//   console.log("table created");
+// });
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
