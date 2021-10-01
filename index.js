@@ -21,7 +21,7 @@ connection.connect((error) => {
   console.log("Successfully connected to the database.");
 });
 const createTable =
-  "CREATE TABLE IF NOT EXITS info (id int PRIMARY KEY AUTO_INCREMENT, name TEXT, image VARCHAR(255))";
+  "CREATE TABLE IF NOT EXISTS info (id int PRIMARY KEY AUTO_INCREMENT, name TEXT, image VARCHAR(255))";
 
 connection.query(createTable, function (err, result) {
   if (err) throw err;
