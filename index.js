@@ -70,7 +70,8 @@ async function getImageInfoAndStoreToDb(param) {
 app.use("/images", express.static(path.join(__dirname, "./images")));
 
 app.get("/api/get", (req, res) => {
-  const sqlSelectAll = "SELECT * FROM info";
+  // display 5 latest queries
+  const sqlSelectAll = "SELECT * FROM info ORDER BY id DESC LIMIT 5";
   connection.query(sqlSelectAll, (err, result) => {
     if (err) res.send({ msg: err });
 
@@ -83,6 +84,7 @@ app.post("/api/post", upload.single("file"), (req, res, err) => {
   getImageInfoAndStoreToDb(image);
   res.send({ msg: "The image has been uploaded" });
 });
+
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
