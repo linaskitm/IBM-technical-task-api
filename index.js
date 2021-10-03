@@ -42,7 +42,7 @@ const upload = multer({ storage: storage });
 app.use(cors());
 
 async function getImageInfoAndStoreToDb(param) {
-  // Imports the Google Cloud client library
+  //Imports the Google Cloud client library
   const vision = require("@google-cloud/vision");
 
   // Creates a client
@@ -59,7 +59,9 @@ async function getImageInfoAndStoreToDb(param) {
     array.push(label.description);
     console.log(label.description);
   });
+  
   console.log("Array of: ", array);
+  
   const sqlInsert = `INSERT INTO info (name, image) VALUES (?,?)`;
   connection.query(sqlInsert, [`[${array}]`, param], (err, rows) => {
     if (err) throw err;
